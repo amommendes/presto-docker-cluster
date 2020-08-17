@@ -1,7 +1,7 @@
 ## Presto cluster with docker
 
-- 1- Download source tar.gz and cli from [here](https://prestosql.io/download.html) and put in `docker/src` 
-- 2- Build prestosql image from docker folder. You can change prestosql version setting the `ARG` PRESTO_VERSION when building. Default is 340.
+- 1- Download source `tar.gz` and `cli` from [here](https://prestosql.io/download.html) and put in `docker/src` 
+- 2- Build prestosql image from docker folder. You can change prestosql version setting the `ARG` `PRESTO_VERSION=XXX` when building. Default is 340.
 
 ```
 docker build -t prestosql .
