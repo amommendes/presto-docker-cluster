@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+    coordinator:
+      image: prestosql
+      ports:
+        - "8080:8080"
+      volumes:
+        - "${PWD}/config/coordinator/etc/config.properties:/etc/presto/config.properties"
+        - ${PWD}/config/commons/jvm.config:/etc/presto/jvm.config
+        - ${PWD}/config/commons/log.properties:/etc/presto/log.properties
+        - ${PWD}/config/commons/node.properties:/etc/presto/node.properties
+        - ${PWD}/config/catalog:/etc/presto/catalog
+
+    worker:
+      image: prestosql
+      volumes:
+        - ./config/worker/etc/config.properties:/etc/presto/config.properties
+        - ./config/commons/jvm.config:/etc/presto/jvm.config
+        - ./config/commons/log.properties:/etc/presto/log.properties
+        - ./config/commons/node.properties:/etc/presto/node.properties
+        - ./config/catalog:/etc/presto/catalog
+      depends_on:
+        - coordinator
